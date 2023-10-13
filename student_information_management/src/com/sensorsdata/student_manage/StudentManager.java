@@ -60,10 +60,56 @@ public class StudentManager {
         }
     }
     public static void deleteStudent(ArrayList<Student> students){
+        System.out.println("请输入学生id: ");
+        Scanner sc = new Scanner(System.in);
+        int id = sc.nextInt();
+        if(isExist(students,id)){
+            Student st = getStudentById(students,id);
+            if(st == null)
+                return;
+            students.remove(st);
+            System.out.println("学生"+st.getName()+"信息删除成功");
+
+        }else{
+            System.out.println("该学生id不存在!");
+        }
 
     }
 
     public static void modifyStudent(ArrayList<Student> students){
+        System.out.println("请输入学生id: ");
+        Scanner sc = new Scanner(System.in);
+        int id = sc.nextInt();
+        if(isExist(students,id)){
+            Student st = getStudentById(students,id);
+            if(st == null)
+                return ;
+            System.out.println("请输入需要修改的学生信息，姓名，年龄，家庭地址：");
+            String info = sc.next();
+            switch (info){
+                case "姓名":
+                    System.out.println("请输入学生姓名: ");
+                    String name = sc.next();
+                    st.setName(name);
+                    break;
+                case "年龄":
+                    System.out.println("请输入学生年龄: ");
+                    int age = sc.nextInt();
+                    st.setAge(age);
+                    break;
+                case "家庭地址:":
+                    System.out.println("请输入学生家庭地址: ");
+                    String area = sc.next();
+                    st.setName(area);
+                    break;
+                default:
+                    System.out.println("输入有误，请重新输入!");
+            }
+            System.out.println("学生"+st.getName()+"信息修改成功");
+
+        }else{
+            System.out.println("该学生id不存在!");
+        }
 
     }
 
@@ -96,6 +142,20 @@ public class StudentManager {
             }
         }
         return flag;
+    }
+
+    public static Student getStudentById(ArrayList<Student> students,int id){
+        if(isExist(students,id)){
+            for(Student st:students){
+                if(id == st.getId())
+                    return st;
+            }
+
+        }else{
+            System.out.println("未找到该学生!");
+
+        }
+        return null;
     }
 
 }
