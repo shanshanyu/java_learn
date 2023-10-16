@@ -125,7 +125,7 @@ public class StudentManager {
 
 
     public static void printStudentInfo(Student st){
-        //打印某个学生的信息
+        //打印某个学生的信息，这几行可以合在一起，写成一行
         System.out.print("id:"+st.getId()+'\t');
         System.out.print("姓名:"+st.getName()+'\t');
         System.out.print("年龄:"+st.getAge()+'\t');
