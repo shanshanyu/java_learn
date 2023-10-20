@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentManager {
+    //private 修饰避免被外部访问，final 表示设置为常量，避免被修改
+    private static final String ADD_STUDENT = "1";
+    private static final String DEL_STUDENT = "2";
+    private static final String MODIFY_STUDENT = "3";
+    private static final String QUERY_STUDENT = "4";
+    private static final String EXIT = "5";
     public static void main(String[] args) {
         String choice;
         Scanner sc = new Scanner(System.in);
@@ -14,11 +20,11 @@ public class StudentManager {
             display();
             choice = sc.next();
             switch (choice){
-                case "1": addStudent(students);break;
-                case "2": deleteStudent(students);break;
-                case "3": modifyStudent(students);break;
-                case "4": queryStudent(students);break;
-                case "5":
+                case ADD_STUDENT: addStudent(students);break;  //用常量表示增加可读性
+                case DEL_STUDENT: deleteStudent(students);break;
+                case MODIFY_STUDENT: modifyStudent(students);break;
+                case QUERY_STUDENT: queryStudent(students);break;
+                case EXIT:
                     System.exit(0);
                 default:
                     System.out.println("输入有误，请重新输入");

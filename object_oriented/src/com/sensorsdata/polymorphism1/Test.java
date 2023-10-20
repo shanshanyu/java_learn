@@ -14,5 +14,8 @@ public class Test {
         Person p = new Person("老王",30);
         p.keepPet(d,"大便");
         p.keepPet(c,"鱼干");
+
+        System.out.println(d.getClass());
+
     }
 }
