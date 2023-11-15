@@ -22,7 +22,7 @@ public class GameJFrame extends JFrame {
     private void initImage() {
         int[] s = new int[16];
         for(int i = 0; i < 16; i++)
-            s[i] = i;
+            s[i] = i+1;
 
         int [][] s1 = shuffleImage(s);
 
@@ -35,70 +35,7 @@ public class GameJFrame extends JFrame {
             }
         }
 
-        /*JLabel jLabel1 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\1.jpg"));
-        jLabel1.setBounds(0,0,105,105);
-        this.getContentPane().add(jLabel1);
 
-        JLabel jLabel2 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\2.jpg"));
-        jLabel2.setBounds(105,0,105,105);
-        this.getContentPane().add(jLabel2);
-
-        JLabel jLabel3 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\3.jpg"));
-        jLabel3.setBounds(210,0,105,105);
-        this.getContentPane().add(jLabel3);
-
-        JLabel jLabel4 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\4.jpg"));
-        jLabel4.setBounds(315,0,105,105);
-        this.getContentPane().add(jLabel4);
-
-        JLabel jLabel5 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\5.jpg"));
-        jLabel5.setBounds(0,105,105,105);
-        this.getContentPane().add(jLabel5);
-
-        JLabel jLabel6 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\6.jpg"));
-        jLabel6.setBounds(105,105,105,105);
-        this.getContentPane().add(jLabel6);
-
-        JLabel jLabel7 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\7.jpg"));
-        jLabel7.setBounds(210,105,105,105);
-        this.getContentPane().add(jLabel7);
-
-        JLabel jLabel8 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\8.jpg"));
-        jLabel8.setBounds(315,105,105,105);
-        this.getContentPane().add(jLabel8);
-
-        JLabel jLabel9 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\9.jpg"));
-        jLabel9.setBounds(0,210,105,105);
-        this.getContentPane().add(jLabel9);
-
-        JLabel jLabel10 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\10.jpg"));
-        jLabel10.setBounds(105,210,105,105);
-        this.getContentPane().add(jLabel10);
-
-        JLabel jLabel11 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\11.jpg"));
-        jLabel11.setBounds(210,210,105,105);
-        this.getContentPane().add(jLabel11);
-
-        JLabel jLabel12 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\12.jpg"));
-        jLabel12.setBounds(315,210,105,105);
-        this.getContentPane().add(jLabel12);
-
-        JLabel jLabel13 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\13.jpg"));
-        jLabel13.setBounds(0,315,105,105);
-        this.getContentPane().add(jLabel13);
-
-
-        JLabel jLabel14 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\14.jpg"));
-        jLabel14.setBounds(105,315,105,105);
-        this.getContentPane().add(jLabel14);
-
-        JLabel jLabel15 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\15.jpg"));
-        jLabel15.setBounds(210,315,105,105);
-        this.getContentPane().add(jLabel15);
-
-        JLabel jLabel16 = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\16.jpg"));
-        jLabel16.setBounds(315,315,105,105);
-        this.getContentPane().add(jLabel16);*/
     }
 
     private void initJmenuBar() {
