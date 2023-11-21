@@ -1,16 +1,41 @@
 package com.sensorsdata.ui;
 
+
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class GameJFrame extends JFrame {
+public class GameJFrame extends JFrame implements KeyListener {
+    //实例变量，记录二维数组的位置
+    private int x;
+    private int y;
+
+    //二维数组
+    int[][] s1 = new int[4][4];
+
+    String path = "jigsawgame\\image\\animal\\animal1\\";
+
+    int[][] win = {
+            {1,2,3,4},
+            {5,6,7,8},
+            {9,10,11,12},
+            {13,14,15,0}
+    };
+
     public GameJFrame() throws HeadlessException {
+        this.x = 0;
+        this.y = 0;
         //把方法抽取出来，初始化界面
         initJFrame();
 
         //初始化菜单
         initJmenuBar();
+
+        //打乱图片位置
+        shuffleImage();
 
         //初始化图片
         initImage();
@@ -20,22 +45,34 @@ public class GameJFrame extends JFrame {
     }
 
     private void initImage() {
-        int[] s = new int[16];
-        for(int i = 0; i < 16; i++)
-            s[i] = i+1;
+        //清空容器窗体
+        this.getContentPane().removeAll();
 
-        int [][] s1 = shuffleImage(s);
 
-        for(int i = 1; i <= 4; i++){
-            for(int j = 1; j <= 4; j++) {
+        if(isSeq()){
+            JLabel winJ = new JLabel(new ImageIcon("jigsawgame\\image\\win.png"));
+            winJ.setBounds(203,283,197,73);
+            this.getContentPane().add(winJ);
+        }
 
-                JLabel jlabel = new JLabel(new ImageIcon("D:\\java_project\\java_learn\\jigsawgame\\image\\animal\\animal1\\" +s1[i-1][j-1] + ".jpg"));
-                jlabel.setBounds((j - 1) * 105,(i-1)*105,105,105);
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++) {
+                //这里的路径应该用相对路径
+                JLabel jlabel = new JLabel(new ImageIcon(path +s1[i][j] + ".jpg"));
+                jlabel.setBounds(j * 105+83,i*105+134,105,105);
+                //添加边框
+                jlabel.setBorder(new BevelBorder(BevelBorder.LOWERED));
                 this.getContentPane().add(jlabel);
             }
         }
 
+        //先加载的图片在上方，后加载的在下方
+        JLabel background = new JLabel(new ImageIcon("jigsawgame\\image\\background.png"));
+        background.setBounds(40,40,508,560);
+        this.getContentPane().add(background);
 
+        //重新渲染
+        this.getContentPane().repaint();
     }
 
     private void initJmenuBar() {
@@ -77,12 +114,20 @@ public class GameJFrame extends JFrame {
 
         //取消默认布局
         this.setLayout(null);
+
+        //添加键盘监听事件
+        this.addKeyListener(this);
     }
 
-    private int[][] shuffleImage(int[] s){
+    private void shuffleImage(){
+        int[] s = new int[16];
+        for(int i = 0; i < 16; i++)
+            s[i] = i;
+
         Random r = new Random();
         int index;
         int tmp;
+        //打乱一维数组
         for(int i=0; i < s.length; i++){
             index = r.nextInt(s.length);
             tmp = s[index];
@@ -90,10 +135,123 @@ public class GameJFrame extends JFrame {
             s[i] = tmp;
         }
 
-        int[][] s1 =  new int[4][4];
+
         for(int i = 0; i < s.length; i++){
-            s1[i/4][i%4] = s[i];
+            //记录0的位置
+            if(s[i] == 0){
+                this.x = i/4;
+                this.y = i%4;
+                s1[i/4][i%4] = 0;
+            }else{
+                s1[i/4][i%4] = s[i];
+            }
+
         }
-        return s1;
     }
+
+    private void displayFullImage(){
+        //清空容器窗体
+        this.getContentPane().removeAll();
+
+        JLabel jlabel = new JLabel(new ImageIcon(path+"all.jpg"));
+        jlabel.setBounds(83,134,420,420);
+        //添加边框
+        jlabel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        this.getContentPane().add(jlabel);
+
+        //先加载的图片在上方，后加载的在下方
+        JLabel background = new JLabel(new ImageIcon("jigsawgame\\image\\background.png"));
+        background.setBounds(40,40,508,560);
+        this.getContentPane().add(background);
+
+        //重新渲染
+        this.getContentPane().repaint();
+    }
+
+    //判断二维数组是否有序
+    private boolean isSeq(){
+        boolean flag = true;
+
+        for(int i = 0; i < 4; i++)
+            for(int j = 0; j < 4; j++)
+                if(s1[i][j] != win[i][j]){
+                    flag = false;
+                    return flag;
+                }
+        return flag;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(isSeq())
+            return ;
+        int code = e.getKeyCode();
+        if(code == 80)
+            displayFullImage();
+        else if(code == 87){
+            s1 = win;
+            initImage();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(isSeq())
+            return ;
+        //左：37，上：38，右：39，下：40
+        int code = e.getKeyCode();
+        switch(code){
+            case 37: //左
+                int y1 = (y+1)==4 ? y : (y+1);
+                s1[x][y] = s1[x][y1];
+                s1[x][y1] = 0;
+                y = (y+1==4) ? y : (y+1);
+
+                initImage();
+                break;
+
+            case 38: //上
+                //数字交换换成后，图片怎么显示？
+                // initImage()
+
+                int x1 = (x+1)==4 ? x : (x+1);
+                s1[x][y] = s1[x1][y];
+                s1[x1][y] = 0;
+                x = (x+1==4) ? x : (x+1);
+
+                initImage();
+                break;
+
+            case 39:
+                int y2 = (y-1)==-1 ? y : (y-1);
+                s1[x][y] = s1[x][y2];
+                s1[x][y2] = 0;
+                y = (y-1==-1) ? y : (y-1);
+
+                initImage();
+                break;
+            case 40:
+                int x2 = (x-1)==-1 ? x : (x-1);
+                s1[x][y] = s1[x2][y];
+                s1[x2][y] = 0;
+                x = (x-1==-1) ? x : (x-1);
+
+                initImage();
+                break;
+            case 80:
+                initImage();
+                break;
+
+            case 87:
+
+            default:
+                System.out.println("未知按键");
+        }
+    }
+
 }
