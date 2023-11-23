@@ -61,7 +61,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
         this.getContentPane().removeAll();
 
         //用户名图片
-        JLabel usernameText = new JLabel(new ImageIcon("jigsawgame\\image\\login\\用户名.png"));
+        JLabel usernameText = new JLabel(new ImageIcon("image\\login\\用户名.png"));
         usernameText.setBounds(116,200,47,17);
         this.getContentPane().add(usernameText);
 
@@ -70,7 +70,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
         this.getContentPane().add(username);
 
         //密码图片
-        JLabel passText = new JLabel(new ImageIcon("jigsawgame\\image\\login\\密码.png"));
+        JLabel passText = new JLabel(new ImageIcon("image\\login\\密码.png"));
         passText.setBounds(116,250,32,16);
         this.getContentPane().add(passText);
 
@@ -79,7 +79,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
         this.getContentPane().add(pass);
 
         //验证码图片
-        JLabel verifyText = new JLabel(new ImageIcon("jigsawgame\\image\\login\\验证码.png"));
+        JLabel verifyText = new JLabel(new ImageIcon("image\\login\\验证码.png"));
         verifyText.setBounds(116,300,56,21);
         this.getContentPane().add(verifyText);
 
@@ -93,7 +93,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
         this.getContentPane().add(verifyCode);
 
         //登录按钮
-        loginText.setIcon(new ImageIcon("jigsawgame\\image\\login\\登录按钮.png"));
+        loginText.setIcon(new ImageIcon("image\\login\\登录按钮.png"));
 
         loginText.setBounds(116,350,128,47);
         //去除按钮默认背景
@@ -105,7 +105,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
         loginText.addActionListener(this);
 
         //注册按钮
-        registerText.setIcon(new ImageIcon("jigsawgame\\image\\login\\注册按钮.png"));
+        registerText.setIcon(new ImageIcon("image\\login\\注册按钮.png"));
         registerText.setBounds(280,350,128,47);
         //去除按钮默认背景
         registerText.setContentAreaFilled(false);
@@ -117,7 +117,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
 
 
         //先加载的图片在上方，后加载的在下方
-        JLabel background = new JLabel(new ImageIcon("jigsawgame\\image\\background.png"));
+        JLabel background = new JLabel(new ImageIcon("image\\background.png"));
         background.setBounds(40,40,508,560);
         this.getContentPane().add(background);
 
@@ -151,7 +151,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
         if(obj == loginText){
-            loginText.setIcon(new ImageIcon("jigsawgame\\image\\login\\登录按下.png"));
+            loginText.setIcon(new ImageIcon("image\\login\\登录按下.png"));
             String inputUser = username.getText();
             String inputPass = String.valueOf(pass.getPassword());
             if(inputUser.equals("zhangsan") && inputPass.equals("1234")){
@@ -161,7 +161,7 @@ public class LoginJFrame extends JFrame implements ActionListener {
                 showDialog("用户名或密码不正确");
             }
         }else if(obj == registerText){
-            registerText.setIcon(new ImageIcon("jigsawgame\\image\\login\\注册按下.png"));
+            registerText.setIcon(new ImageIcon("image\\login\\注册按下.png"));
         }
     }
 }
