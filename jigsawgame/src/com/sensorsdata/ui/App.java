@@ -1,8 +1,8 @@
 package com.sensorsdata.ui;
 
-public class Test {
+public class App {
     public static void main(String[] args) {
-        GameJFrame game = new GameJFrame();
+        new LoginJFrame();
 
     }
 }

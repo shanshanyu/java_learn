@@ -4,11 +4,13 @@ package com.sensorsdata.ui;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class GameJFrame extends JFrame implements KeyListener {
+public class GameJFrame extends JFrame implements KeyListener, ActionListener {
     //实例变量，记录二维数组的位置
     private int x;
     private int y;
@@ -24,6 +26,18 @@ public class GameJFrame extends JFrame implements KeyListener {
             {9,10,11,12},
             {13,14,15,0}
     };
+
+    //定义count统计步数
+    int step = 0;
+
+
+    JMenuItem reGame = new JMenuItem("重新游戏");
+    JMenuItem reRegister = new JMenuItem("重新登录");
+    JMenuItem closeGame = new JMenuItem("关闭游戏");
+
+    JMenuItem animalPic = new JMenuItem("动物图片");
+    JMenuItem beautyPic = new JMenuItem("美女图片");
+    JMenuItem sportPic = new JMenuItem("运动图片");
 
     public GameJFrame() throws HeadlessException {
         this.x = 0;
@@ -48,6 +62,9 @@ public class GameJFrame extends JFrame implements KeyListener {
         //清空容器窗体
         this.getContentPane().removeAll();
 
+        JLabel stepCount = new JLabel("步数:"+step);
+        stepCount.setBounds(50,30,100,20);
+        this.getContentPane().add(stepCount);
 
         if(isSeq()){
             JLabel winJ = new JLabel(new ImageIcon("jigsawgame\\image\\win.png"));
@@ -81,17 +98,25 @@ public class GameJFrame extends JFrame implements KeyListener {
 
         JMenu functionJmenu = new JMenu("功能");
         JMenu aboutJmenu = new JMenu("关于我们");
+        JMenu changePicture = new JMenu("更换图片"); //更换图片有子选项，更换图片也要用 jmenu，子选项用jmenuitem
 
-        JMenuItem changePicture = new JMenuItem("更换图片");
-        JMenuItem reGame = new JMenuItem("重新游戏");
-        JMenuItem reRegister = new JMenuItem("重新登录");
-        JMenuItem closeGame = new JMenuItem("关闭游戏");
+        reGame.addActionListener(this);
+        reRegister.addActionListener(this);
+        closeGame.addActionListener(this);
+
+        beautyPic.addActionListener(this);
+        sportPic.addActionListener(this);
+        animalPic.addActionListener(this);
 
         //jmeuitem加入到jmenu中
         functionJmenu.add(changePicture);
         functionJmenu.add(reGame);
         functionJmenu.add(reRegister);
         functionJmenu.add(closeGame);
+
+        changePicture.add(beautyPic);
+        changePicture.add(sportPic);
+        changePicture.add(animalPic);
 
         //jmenu加入到jmenubar中
         jMenuBar.add(functionJmenu);
@@ -213,6 +238,7 @@ public class GameJFrame extends JFrame implements KeyListener {
                 y = (y+1==4) ? y : (y+1);
 
                 initImage();
+                step++;
                 break;
 
             case 38: //上
@@ -225,6 +251,7 @@ public class GameJFrame extends JFrame implements KeyListener {
                 x = (x+1==4) ? x : (x+1);
 
                 initImage();
+                step++;
                 break;
 
             case 39:
@@ -234,6 +261,7 @@ public class GameJFrame extends JFrame implements KeyListener {
                 y = (y-1==-1) ? y : (y-1);
 
                 initImage();
+                step++;
                 break;
             case 40:
                 int x2 = (x-1)==-1 ? x : (x-1);
@@ -242,16 +270,57 @@ public class GameJFrame extends JFrame implements KeyListener {
                 x = (x-1==-1) ? x : (x-1);
 
                 initImage();
+                step++;
                 break;
             case 80:
                 initImage();
                 break;
-
-            case 87:
-
             default:
                 System.out.println("未知按键");
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        if(obj == reGame){
+            step++;
+            shuffleImage();
+            initImage();
+        }else if(obj == reRegister){
+            //关闭当前界面
+            this.setVisible(false);
+            //显示登录界面
+            new LoginJFrame();
+
+        }else if(obj == beautyPic) {
+            Random r = new Random();
+            int num = r.nextInt(13)+1; //1 到 13 之间生成一个数
+            path = "jigsawgame\\image\\girl\\girl"+num+"\\";
+            step = 0;
+            shuffleImage();
+            initImage();
+
+        }else if(obj == animalPic) {
+            Random r = new Random();
+            int num = r.nextInt(8)+1; //1 到 13 之间生成一个数
+            path = "jigsawgame\\image\\animal\\animal"+num+"\\";
+            step = 0;
+            shuffleImage();
+            initImage();
+
+        }else if(obj == sportPic) {
+            Random r = new Random();
+            int num = r.nextInt(10)+1; //1 到 13 之间生成一个数
+            path = "jigsawgame\\image\\sport\\sport"+num+"\\";
+            step = 0;
+            shuffleImage();
+            initImage();
+
+
+        }else if(obj == closeGame){
+            //关闭游戏
+            System.exit(0);
+        }
+    }
 }
