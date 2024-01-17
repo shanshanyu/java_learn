@@ -7,6 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/jigsawgame/jigsawgame.iml" filepath="$PROJECT_DIR$/jigsawgame/jigsawgame.iml" />
       <module fileurl="file://$PROJECT_DIR$/object_oriented/object_oriented.iml" filepath="$PROJECT_DIR$/object_oriented/object_oriented.iml" />
       <module fileurl="file://$PROJECT_DIR$/puzzlegame/puzzlegame.iml" filepath="$PROJECT_DIR$/puzzlegame/puzzlegame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spoof/spoof.iml" filepath="$PROJECT_DIR$/spoof/spoof.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_project/spring_project.iml" filepath="$PROJECT_DIR$/spring_project/spring_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/student_information_management/student_information_management.iml" filepath="$PROJECT_DIR$/student_information_management/student_information_management.iml" />
     </modules>
   </component>
