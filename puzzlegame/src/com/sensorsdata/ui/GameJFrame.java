@@ -18,7 +18,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
     //二维数组
     int[][] s1 = new int[4][4];
 
-    String path = "jigsawgame\\image\\animal\\animal1\\";
+    String path = "image\\animal\\animal1\\";
 
     int[][] win = {
             {1,2,3,4},
@@ -67,7 +67,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         this.getContentPane().add(stepCount);
 
         if(isSeq()){
-            JLabel winJ = new JLabel(new ImageIcon("jigsawgame\\image\\win.png"));
+            JLabel winJ = new JLabel(new ImageIcon("image\\win.png"));
             winJ.setBounds(203,283,197,73);
             this.getContentPane().add(winJ);
         }
@@ -84,7 +84,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         }
 
         //先加载的图片在上方，后加载的在下方
-        JLabel background = new JLabel(new ImageIcon("jigsawgame\\image\\background.png"));
+        JLabel background = new JLabel(new ImageIcon("image\\background.png"));
         background.setBounds(40,40,508,560);
         this.getContentPane().add(background);
 
@@ -185,7 +185,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         this.getContentPane().add(jlabel);
 
         //先加载的图片在上方，后加载的在下方
-        JLabel background = new JLabel(new ImageIcon("jigsawgame\\image\\background.png"));
+        JLabel background = new JLabel(new ImageIcon("image\\background.png"));
         background.setBounds(40,40,508,560);
         this.getContentPane().add(background);
 
@@ -296,7 +296,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         }else if(obj == beautyPic) {
             Random r = new Random();
             int num = r.nextInt(13)+1; //1 到 13 之间生成一个数
-            path = "jigsawgame\\image\\girl\\girl"+num+"\\";
+            path = "image\\girl\\girl"+num+"\\";
             step = 0;
             shuffleImage();
             initImage();
@@ -304,7 +304,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         }else if(obj == animalPic) {
             Random r = new Random();
             int num = r.nextInt(8)+1; //1 到 13 之间生成一个数
-            path = "jigsawgame\\image\\animal\\animal"+num+"\\";
+            path = "image\\animal\\animal"+num+"\\";
             step = 0;
             shuffleImage();
             initImage();
@@ -312,7 +312,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         }else if(obj == sportPic) {
             Random r = new Random();
             int num = r.nextInt(10)+1; //1 到 13 之间生成一个数
-            path = "jigsawgame\\image\\sport\\sport"+num+"\\";
+            path = "image\\sport\\sport"+num+"\\";
             step = 0;
             shuffleImage();
             initImage();
