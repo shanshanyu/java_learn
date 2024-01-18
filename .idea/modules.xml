@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/basic/basic.iml" filepath="$PROJECT_DIR$/basic/basic.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_learn.iml" filepath="$PROJECT_DIR$/java_learn.iml" />
       <module fileurl="file://$PROJECT_DIR$/jigsawgame/jigsawgame.iml" filepath="$PROJECT_DIR$/jigsawgame/jigsawgame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multi_thread/multi_thread.iml" filepath="$PROJECT_DIR$/multi_thread/multi_thread.iml" />
       <module fileurl="file://$PROJECT_DIR$/object_oriented/object_oriented.iml" filepath="$PROJECT_DIR$/object_oriented/object_oriented.iml" />
       <module fileurl="file://$PROJECT_DIR$/puzzlegame/puzzlegame.iml" filepath="$PROJECT_DIR$/puzzlegame/puzzlegame.iml" />
       <module fileurl="file://$PROJECT_DIR$/student_information_management/student_information_management.iml" filepath="$PROJECT_DIR$/student_information_management/student_information_management.iml" />
