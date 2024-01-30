@@ -2,6 +2,10 @@ package com.sensorsdata.polymorphism1;
 
 public class Test {
     public static void main(String[] args) {
+        Animal a = new Animal();
+        a.setAge(15);
+
+
         Dog d = new Dog();
         d.setAge(2);
         d.setColor("黑色的");
@@ -17,5 +21,11 @@ public class Test {
 
         System.out.println(d.getClass());
 
+        show(c);
+        show(a);
+
+    }
+    public static void show(Animal a){
+        System.out.println(a.sexy); //变量访问会根据指定的对象来的
     }
 }

@@ -1,6 +1,11 @@
 package com.sensorsdata.polymorphism1;
 
 public class Dog extends  Animal {
+    private String name;
+    private int age;
+
+
+
     @Override
     public void eat(String sth){
         System.out.println(getAge()+"岁的"+getColor()+"狗死死抱着"+sth+"猛啃");

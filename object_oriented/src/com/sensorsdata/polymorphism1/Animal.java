@@ -4,7 +4,7 @@ public class Animal {
     private int age;  //年龄
     private String color;  //颜色
 
-
+    String sexy = "female";
     public Animal() {
     }
 
