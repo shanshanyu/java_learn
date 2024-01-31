@@ -7,7 +7,7 @@ public class CollectionDemo1 {
     public static void main(String[] args) {
         /*
 
-
+        contains方法如果需要判断对象，对象的方法需要重写equals方法
 
          */
         Collection<String> arr = new ArrayList<String>();
